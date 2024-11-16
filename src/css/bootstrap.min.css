@@ -2333,7 +2333,11 @@ pre code {
 .form-control {
     display: block;
     width: 100%;
+<<<<<<< HEAD
     height: calc(1.5em + .75rem + 2px);
+=======
+    height: calc(1.5em + .75rem + 10px);
+>>>>>>> e2bf9b3191d35056e122bafbc2e61429c2f887f8
     padding: .375rem .75rem;
     font-size: 1rem;
     font-weight: 400;

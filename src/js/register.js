@@ -2,12 +2,13 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
 import {
   getAuth,
-  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 import {
   getDatabase,
   ref,
-  update,
+  set,
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
 
 // Your web app's Firebase configuration
@@ -27,33 +28,54 @@ const database = getDatabase(app);
 
 // Wait for the DOM to be fully loaded before defining the register function
 document.addEventListener("DOMContentLoaded", function () {
+  const loggedInContent = document.getElementById("loggedInContent");
+  const loggedOutContent = document.getElementById("loggedOutContent");
+  const youAreLoggedIn = document.getElementById("youAreLoggedIn");
+
   // Function to handle user registration
-  function login(event) {
+  function register(event) {
     event.preventDefault();
     var email = document.getElementById("emailInput").value;
     var password = document.getElementById("passwordInput").value;
-    signInWithEmailAndPassword(auth, email, password)
+    var businessName = document.getElementById("businessNameInput").value;
+
+    createUserWithEmailAndPassword(auth, email, password)
       .then(function (userCredential) {
         const user = userCredential.user;
         const userRef = ref(database, "users/" + user.uid);
         const user_data = {
+          email: email,
+          businessName: businessName,
           lastLogin: Date.now(),
         };
-        update(userRef, user_data)
+        set(userRef, user_data)
           .then(() => {
-            alert("User " + email + " logged in successfully!");
+            alert("User " + email + " signed up successfully!");
           })
           .catch((error) => {
-            console.error("Error logging in user:", error.message);
+            console.error("Error saving user data:", error.message);
           });
-        alert("User " + email + " logged in successfully!");
       })
       .catch(function (error) {
         alert("Error: " + error.message);
       });
   }
 
+  // Check if a user is logged in and show content accordingly
+  onAuthStateChanged(auth, function (user) {
+    if (user) {
+      // User is logged in, show logged-in content and hide logged-out content
+      loggedInContent.style.display = "block";
+      loggedOutContent.style.display = "none";
+      youAreLoggedIn.innerHTML = "You are logged in as " + user.email;
+    } else {
+      // No user is logged in, show logged-out content and hide logged-in content
+      loggedInContent.style.display = "none";
+      loggedOutContent.style.display = "block";
+    }
+  });
+
   // Attach the register function to the button click event
-  const loginButton = document.getElementById("loginButton");
-  loginButton.addEventListener("click", login);
+  const registerButton = document.getElementById("registerButton");
+  registerButton.addEventListener("click", register);
 });

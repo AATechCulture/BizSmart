@@ -9,14 +9,18 @@ faker = Faker()
 num_sets = 500
 
 
-HOST = "hackathonfakerfile-mwc2k52q3qz68tzk.env.clearscape.teradata.com"
-USER = "demo_user"
-PASS = "HackathonTSU2024#"
+HOST = "hackathonfakerfile-mwc2k52q3qz68tzk.env.clearscape.teradata.com"  # URL where database is hosted  
+USER = "demo_user"                                                        # User on the database we're using
+PASS = "HackathonTSU2024#"                                                # Password for database
 
-db = teradatasql.connect(host=HOST,user = USER, password = PASS)
+db = teradatasql.connect(host=HOST,user = USER, password = PASS)          # Connects python code to teradata database
 
+<<<<<<< HEAD
 curse = db.cursor()
  
+=======
+curse = db.cursor()                                                       # Create cursor object from the database connection
+>>>>>>> e2bf9b3191d35056e122bafbc2e61429c2f887f8
 
 curse.execute(f"""
               CREATE TABLE {USER}.TSikk(

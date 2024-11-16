@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Diagoona Template - Contact page</title>
+    <title>BizSmart</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet" />
     <!-- https://fonts.google.com/ -->
     <link href="/src\css\bootstrap.min.css" rel="stylesheet" /> <!-- https://getbootstrap.com/ -->
@@ -50,10 +50,10 @@ https://templatemo.com/tm-550-diagoona
                                     <a class="nav-link tm-nav-link" href="services.html">Services</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link tm-nav-link" href="contact.html">Contact</a>
+                                    <a class="nav-link tm-nav-link" href="contact.html">Input</a>
                                 </li>
                                 <li class="nav-item active">
-                                    <a class="nav-link tm-nav-link" href="login.html">Login <span
+                                    <a class="nav-link tm-nav-link" href="login.html">Login<span
                                             class="sr-only">(current)</span></a>
                                 </li>
                             </ul>
@@ -66,44 +66,26 @@ https://templatemo.com/tm-550-diagoona
                 <div class="tm-col-left"></div>
                 <main class="tm-col-right tm-contact-main"> <!-- Content -->
                     <section class="tm-content tm-contact">
-                        <h2 class="mb-4 tm-content-title">Input a Expense Receipt</h2>
-                        <p class="mb-85">Etiam et egestas arcu. Fusce congue quis elit vitae commodo. Cras neque mauris,
-                            vehicula in ipsum sit amet, faucibus aliquam arcu.</p>
-                        <form id="contact-form" action="" method="POST">
-                            <div class="form-group mb-4">
-                                <input type="text" name="name" class="form-control" placeholder="Name" required="" />
+                        <h2 class="mb-4 tm-content-title">Login</h2>
+                        <p class="mb-5">Log into your account to see your spending and expenses</p>
+                        <div>
+                            <div class="form-group mt-1 mb-4">
+                                <input type="email" name="email" id="emailInput" class="form-control"
+                                    placeholder="Email" required="" />
                             </div>
                             <div class="form-group mb-4">
-                                <input type="email" name="email" class="form-control" placeholder="Email" required="" />
-                            </div>
-                            <div class="form-group mb-5">
-                                <textarea rows="6" name="message" class="form-control" placeholder="Message..."
-                                    required=""></textarea>
+                                <input type="password" name="password" id="passwordInput" class="form-control"
+                                    placeholder="Password" required="" />
                             </div>
                             <div class="text-right">
-                                <button type="submit" class="btn btn-big btn-primary">Send It</button>
+                                <button type="button" id="loginButton" class="btn btn-big btn-primary">Login</button>
                             </div>
-                        </form>
+                            <div class="text-right mt-2">
+                                <a href="register.html">Don't have an account? Register here</a>
+                            </div>
+                        </div>
                     </section>
                 </main>
-            </div>
-        </div>
-
-        <div class="tm-row">
-            <div class="tm-col-left text-center">
-                <ul class="tm-bg-controls-wrapper">
-                    <li class="tm-bg-control active" data-id="0"></li>
-                    <li class="tm-bg-control" data-id="1"></li>
-                    <li class="tm-bg-control" data-id="2"></li>
-                </ul>
-            </div>
-            <div class="tm-col-right tm-col-footer">
-                <footer class="tm-site-footer text-right">
-                    <p class="mb-0">Copyright 2020 Diagoona Co.
-
-                        | Design: <a rel="nofollow" target="_parent" href="https://templatemo.com"
-                            class="tm-text-link">TemplateMo</a></p>
-                </footer>
             </div>
         </div>
 
@@ -113,36 +95,16 @@ https://templatemo.com/tm-550-diagoona
         </div>
     </div>
 
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyCYQyzjwjBm6I067ISbizMwujJxS1C7dw4",
-            authDomain: "bizsmart-login.firebaseapp.com",
-            projectId: "bizsmart-login",
-            storageBucket: "bizsmart-login.firebasestorage.app",
-            messagingSenderId: "649837784329",
-            appId: "1:649837784329:web:560ddb948a1e0f563577d8"
-        };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-    </script>
-
-    <script src="https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js"></script>
-
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.backstretch.min.js"></script>
-    <script src="js/templatemo-script.js"></script>
-
-    <script src="login.js"></script>
+    <div class="backstretch"
+        style="left: 0px; top: 0px; margin: 0px; padding: 0px; height: auto; width: auto; max-height: 100%; max-width: 100%; z-index: -999999; position: fixed;">
+        <div class="backstretch-item"
+            style="position: absolute; margin: 0px; padding: 0px; border: none; width: 100%; height: 100%; z-index: -999999;">
+            <img alt="" src="../static/images/from-business.jpg"
+                style="position: absolute; margin: 0px; margin-top: 140px; padding: 0px; border: none; width: 1130.51px; height: 667px; max-width: none; inset: 0px auto auto -208.754px;">
+        </div>
+    </div>
+    
+    <script type="module" src="../src/js/login.js" defer></script>
 </body>
 
 </html>
