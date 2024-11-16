@@ -44,12 +44,15 @@ document.addEventListener("DOMContentLoaded", function () {
         userRef
           .set(user_data)
           .then(() => {
-            alert("User " + email + " signed up successfully!");
+            alert("User " + email + " logged in successfully!");
+            window.location.href = "/public/index.html";
           })
           .catch((error) => {
             console.error("Error saving user data:", error.message);
           });
       })
+      // redirect to the home page
+
       .catch(function (error) {
         alert("Error: " + error.message);
       });

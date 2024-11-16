@@ -4,6 +4,7 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
+  signOut,
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 import {
   getDatabase,
@@ -31,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const loggedInContent = document.getElementById("loggedInContent");
   const loggedOutContent = document.getElementById("loggedOutContent");
   const youAreLoggedIn = document.getElementById("youAreLoggedIn");
+  const logoutButton = document.getElementById("logoutButton");
 
   // Function to handle user registration
   function register(event) {
@@ -51,6 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
         set(userRef, user_data)
           .then(() => {
             alert("User " + email + " signed up successfully!");
+            window.location.href = "/public/index.html";
           })
           .catch((error) => {
             console.error("Error saving user data:", error.message);
@@ -58,6 +61,17 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       .catch(function (error) {
         alert("Error: " + error.message);
+      });
+  }
+
+  // Function to handle user logout
+  function logout() {
+    signOut(auth)
+      .then(() => {
+        alert("You have been logged out.");
+      })
+      .catch((error) => {
+        console.error("Error logging out:", error.message);
       });
   }
 
@@ -78,4 +92,5 @@ document.addEventListener("DOMContentLoaded", function () {
   // Attach the register function to the button click event
   const registerButton = document.getElementById("registerButton");
   registerButton.addEventListener("click", register);
+  logoutButton.addEventListener("click", logout);
 });
