@@ -42,12 +42,15 @@ document.addEventListener("DOMContentLoaded", function () {
         update(userRef, user_data)
           .then(() => {
             alert("User " + email + " logged in successfully!");
+            window.location.href = "/public/index.html";
           })
           .catch((error) => {
             console.error("Error logging in user:", error.message);
           });
         alert("User " + email + " logged in successfully!");
       })
+      // redirect to the home page
+
       .catch(function (error) {
         alert("Error: " + error.message);
       });
