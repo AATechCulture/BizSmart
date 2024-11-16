@@ -2,12 +2,12 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
 import {
   getAuth,
-  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 import {
   getDatabase,
   ref,
-  set,
+  update,
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
 
 // Your web app's Firebase configuration
@@ -28,32 +28,25 @@ const database = getDatabase(app);
 // Wait for the DOM to be fully loaded before defining the register function
 document.addEventListener("DOMContentLoaded", function () {
   // Function to handle user registration
-  function register(event) {
+  function login(event) {
     event.preventDefault();
     var email = document.getElementById("emailInput").value;
     var password = document.getElementById("passwordInput").value;
-    var businessName = document.getElementById("businessNameInput").value;
-
-    console.log(email);
-    console.log(password);
-    console.log(businessName);
-
-    createUserWithEmailAndPassword(auth, email, password) 
+    signInWithEmailAndPassword(auth, email, password)
       .then(function (userCredential) {
         const user = userCredential.user;
-        const userRef = ref(database, "users/" + user.uid); 
+        const userRef = ref(database, "users/" + user.uid);
         const user_data = {
-          email: email,
-          businessName: businessName,
           lastLogin: Date.now(),
         };
-        set(userRef, user_data) 
+        update(userRef, user_data)
           .then(() => {
-            alert("User " + email + " signed up successfully!");
+            alert("User " + email + " logged in successfully!");
           })
           .catch((error) => {
-            console.error("Error saving user data:", error.message);
+            console.error("Error logging in user:", error.message);
           });
+        alert("User " + email + " logged in successfully!");
       })
       .catch(function (error) {
         alert("Error: " + error.message);
@@ -61,6 +54,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Attach the register function to the button click event
-  const registerButton = document.getElementById("registerButton");
-  registerButton.addEventListener("click", register);
+  const loginButton = document.getElementById("loginButton");
+  loginButton.addEventListener("click", login);
 });
