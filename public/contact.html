@@ -50,7 +50,7 @@ https://templatemo.com/tm-550-diagoona
                                     <a class="nav-link tm-nav-link" href="services.html">Services</a>
                                 </li>
                                 <li class="nav-item active">
-                                    <a class="nav-link tm-nav-link" href="contact.html">Contact <span
+                                    <a class="nav-link tm-nav-link" href="contact.html">Input <span
                                             class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item">
@@ -66,22 +66,30 @@ https://templatemo.com/tm-550-diagoona
                 <div class="tm-col-left"></div>
                 <main class="tm-col-right tm-contact-main"> <!-- Content -->
                     <section class="tm-content tm-contact">
-                        <h2 class="mb-4 tm-content-title">Input a Expense Receipt</h2>
-                        <p class="mb-85">Etiam et egestas arcu. Fusce congue quis elit vitae commodo. Cras neque mauris,
-                            vehicula in ipsum sit amet, faucibus aliquam arcu.</p>
+                        <h2 class="mb-4 tm-content-title">Add a New Expense</h2>
+                        <p class="mb-5">Log your business expenses to track spending and improve financial management.</p>
                         <form id="contact-form" action="" method="POST">
-                            <div class="form-group mb-4">
-                                <input type="text" name="name" class="form-control" placeholder="Name" required="" />
+                            <div class="form-group mt-1 mb-4">
+                                <input type="text" name="expenses" class="form-control" placeholder="Expense Name" required="" />
                             </div>
                             <div class="form-group mb-4">
-                                <input type="email" name="email" class="form-control" placeholder="Email" required="" />
+                                <input type="number" name="amount" class="form-control" placeholder="$ Amount" required="" />
                             </div>
-                            <div class="form-group mb-5">
-                                <textarea rows="6" name="message" class="form-control" placeholder="Message..."
-                                    required=""></textarea>
+                            <div class="form-group mb-4">
+                                <input type="date" name="date" class="form-control" placeholder="Date" required="" />
+                            </div>
+                            <div class="form-group mb-4">
+                                <select class="form-control" id="category" name="category" required="">
+                                    <option value="" disabled selected>Select a category</option>
+                                    <option value="Rent" class="text-dark">Rent</option>
+                                    <option value="Utilities" class="text-dark">Utilities</option>
+                                    <option value="Inventory" class="text-dark">Inventory</option>
+                                    <option value="Marketing" class="text-dark">Marketing</option>
+                                    <option value="Payroll" class="text-dark">Payroll</option>
+                                </select>
                             </div>
                             <div class="text-right">
-                                <button type="submit" class="btn btn-big btn-primary">Send It</button>
+                                <button type="submit" class="btn btn-big btn-primary">Save Expense</button>
                             </div>
                         </form>
                     </section>
