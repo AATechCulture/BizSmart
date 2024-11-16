@@ -49,12 +49,12 @@ https://templatemo.com/tm-550-diagoona
                                 <li class="nav-item">
                                     <a class="nav-link tm-nav-link" href="services.html">Services</a>
                                 </li>
-                                <li class="nav-item active">
-                                    <a class="nav-link tm-nav-link" href="contact.html">Contact <span
-                                            class="sr-only">(current)</span></a>
-                                </li>
                                 <li class="nav-item">
-                                    <a class="nav-link tm-nav-link" href="login.html">Login</a>
+                                    <a class="nav-link tm-nav-link" href="contact.html">Contact</a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link tm-nav-link" href="login.html">Login <span
+                                            class="sr-only">(current)</span></a>
                                 </li>
                             </ul>
                         </div>
@@ -109,14 +109,40 @@ https://templatemo.com/tm-550-diagoona
 
         <div class="tm-bg"> <!-- Diagonal background design -->
             <div class="tm-bg-left"></div>
-            <div class="tm-bg-right"  style="background-color: #000;"></div>
+            <div class="tm-bg-right" style="background-color: #000;"></div>
         </div>
     </div>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCYQyzjwjBm6I067ISbizMwujJxS1C7dw4",
+            authDomain: "bizsmart-login.firebaseapp.com",
+            projectId: "bizsmart-login",
+            storageBucket: "bizsmart-login.firebasestorage.app",
+            messagingSenderId: "649837784329",
+            appId: "1:649837784329:web:560ddb948a1e0f563577d8"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+    </script>
+
+    <script src="https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js"></script>
 
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.backstretch.min.js"></script>
     <script src="js/templatemo-script.js"></script>
+
+    <script src="login.js"></script>
 </body>
 
 </html>
