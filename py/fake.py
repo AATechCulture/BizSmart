@@ -11,7 +11,7 @@ load_dotenv()
 faker = Faker()
 
 # Specify the number of data sets
-num_sets = 500
+num_sets = 5000
 
 
 HOST =  os.getenv("HOST")
@@ -46,13 +46,14 @@ curse.execute(f"""
 # Generate the data
 data = [4]
 for _ in range(num_sets):
+    if _ % 2 == 0:
+        owner_name = faker.name()
     business_name = faker.company()
     business_type = faker.random_element(["Retail", "Restaurant", "Service", "Tech"])
     location = faker.city()
     paymentDesc = ""
-    owner_name = faker.name()
     transaction_date = faker.date_this_year()
-    transaction_amount = round(faker.random_number(digits=4) / 100, 2)
+    transaction_amount = round(faker.random_number(digits=4) / 100, 2) * 10
     category = faker.random_element(["Rent", "Utilities", "Inventory", "Marketing", "Payroll"])
     payment_method = faker.random_element(["Credit Card", "Cash", "Bank Transfer"])
     vendor_name = faker.company()
