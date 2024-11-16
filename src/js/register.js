@@ -40,15 +40,24 @@ document.addEventListener("DOMContentLoaded", function () {
     var email = document.getElementById("emailInput").value;
     var password = document.getElementById("passwordInput").value;
     var businessName = document.getElementById("businessNameInput").value;
+    var businessType = document.getElementById("businessTypeInput").value;
+    var location = document.getElementById("location").value;
+    var owner = document.getElementById("owner").value;
+
 
     createUserWithEmailAndPassword(auth, email, password)
       .then(function (userCredential) {
         const user = userCredential.user;
         const userRef = ref(database, "users/" + user.uid);
         const user_data = {
+          id: user.uid,
           email: email,
           businessName: businessName,
           lastLogin: Date.now(),
+          businessType: businessType,
+          location: location,
+          owner: owner,
+
         };
         set(userRef, user_data)
           .then(() => {
@@ -79,13 +88,13 @@ document.addEventListener("DOMContentLoaded", function () {
   onAuthStateChanged(auth, function (user) {
     if (user) {
       // User is logged in, show logged-in content and hide logged-out content
-      loggedInContent.style.display = "block";
+      loggedInContent.style.display = "flex";
       loggedOutContent.style.display = "none";
       youAreLoggedIn.innerHTML = "You are logged in as " + user.email;
     } else {
       // No user is logged in, show logged-out content and hide logged-in content
       loggedInContent.style.display = "none";
-      loggedOutContent.style.display = "block";
+      loggedOutContent.style.display = "flex";
     }
   });
 
