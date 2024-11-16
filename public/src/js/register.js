@@ -44,7 +44,6 @@ document.addEventListener("DOMContentLoaded", function () {
     var location = document.getElementById("location").value;
     var owner = document.getElementById("owner").value;
 
-
     createUserWithEmailAndPassword(auth, email, password)
       .then(function (userCredential) {
         const user = userCredential.user;
@@ -57,12 +56,11 @@ document.addEventListener("DOMContentLoaded", function () {
           businessType: businessType,
           location: location,
           owner: owner,
-
         };
         set(userRef, user_data)
           .then(() => {
             alert("User " + email + " signed up successfully!");
-            window.location.href = "/public/index.html";
+            window.location.href = "index.html";
           })
           .catch((error) => {
             console.error("Error saving user data:", error.message);
