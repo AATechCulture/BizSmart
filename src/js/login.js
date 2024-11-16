@@ -1,7 +1,14 @@
 // Import the required Firebase modules
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-import { getAuth } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
-import { getDatabase } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+import {
+  getDatabase,
+  ref,
+  update,
+} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -21,34 +28,24 @@ const database = getDatabase(app);
 // Wait for the DOM to be fully loaded before defining the register function
 document.addEventListener("DOMContentLoaded", function () {
   // Function to handle user registration
-  function register(event) {
-    event.preventDefault(); // Prevent form submission
+  function login(event) {
+    event.preventDefault();
     var email = document.getElementById("emailInput").value;
     var password = document.getElementById("passwordInput").value;
-    var businessName = document.getElementById("businessNameInput").value;
-
-    console.log(email);
-    console.log(password);
-    console.log(businessName);
-
-    auth
-      .createUserWithEmailAndPassword(email, password)
+    signInWithEmailAndPassword(auth, email, password)
       .then(function (userCredential) {
         const user = userCredential.user;
-        const userRef = database.ref("users").child(user.uid);
+        const userRef = ref(database, "users/" + user.uid);
         const user_data = {
-          email: email,
-          businessName: businessName,
           lastLogin: Date.now(),
         };
-        userRef
-          .set(user_data)
+        update(userRef, user_data)
           .then(() => {
             alert("User " + email + " logged in successfully!");
             window.location.href = "/public/index.html";
           })
           .catch((error) => {
-            console.error("Error saving user data:", error.message);
+            console.error("Error logging in user:", error.message);
           });
       })
       // redirect to the home page
@@ -59,6 +56,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Attach the register function to the button click event
-  const registerButton = document.getElementById("registerButton");
-  registerButton.addEventListener("click", register);
+  const loginButton = document.getElementById("loginButton");
+  loginButton.addEventListener("click", login);
 });
