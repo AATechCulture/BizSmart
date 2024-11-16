@@ -1,7 +1,14 @@
 // Import the required Firebase modules
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-import { getAuth } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
-import { getDatabase } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+import {
+  getDatabase,
+  ref,
+  set,
+} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -22,7 +29,7 @@ const database = getDatabase(app);
 document.addEventListener("DOMContentLoaded", function () {
   // Function to handle user registration
   function register(event) {
-    event.preventDefault(); // Prevent form submission
+    event.preventDefault();
     var email = document.getElementById("emailInput").value;
     var password = document.getElementById("passwordInput").value;
     var businessName = document.getElementById("businessNameInput").value;
@@ -31,18 +38,16 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(password);
     console.log(businessName);
 
-    auth
-      .createUserWithEmailAndPassword(email, password)
+    createUserWithEmailAndPassword(auth, email, password) 
       .then(function (userCredential) {
         const user = userCredential.user;
-        const userRef = database.ref("users").child(user.uid);
+        const userRef = ref(database, "users/" + user.uid); 
         const user_data = {
           email: email,
           businessName: businessName,
           lastLogin: Date.now(),
         };
-        userRef
-          .set(user_data)
+        set(userRef, user_data) 
           .then(() => {
             alert("User " + email + " signed up successfully!");
           })
