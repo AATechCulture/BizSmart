@@ -1,7 +1,7 @@
-// Import the functions you need from the SDKs you need
+// Import the required Firebase modules
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getAuth } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+import { getDatabase } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -15,5 +15,47 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = app.auth();
-const db = app.database();
+const auth = getAuth(app);
+const database = getDatabase(app);
+
+// Wait for the DOM to be fully loaded before defining the register function
+document.addEventListener("DOMContentLoaded", function () {
+  // Function to handle user registration
+  function register(event) {
+    event.preventDefault(); // Prevent form submission
+    var email = document.getElementById("emailInput").value;
+    var password = document.getElementById("passwordInput").value;
+    var businessName = document.getElementById("businessNameInput").value;
+
+    console.log(email);
+    console.log(password);
+    console.log(businessName);
+
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then(function (userCredential) {
+        const user = userCredential.user;
+        const userRef = database.ref("users").child(user.uid);
+        const user_data = {
+          email: email,
+          businessName: businessName,
+          lastLogin: Date.now(),
+        };
+        userRef
+          .set(user_data)
+          .then(() => {
+            alert("User " + email + " signed up successfully!");
+          })
+          .catch((error) => {
+            console.error("Error saving user data:", error.message);
+          });
+      })
+      .catch(function (error) {
+        alert("Error: " + error.message);
+      });
+  }
+
+  // Attach the register function to the button click event
+  const registerButton = document.getElementById("registerButton");
+  registerButton.addEventListener("click", register);
+});
