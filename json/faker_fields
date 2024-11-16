@@ -1,0 +1,12 @@
+{
+  "business_id": "B001",
+  "business_name": "Local Coffee Spot",
+  "business_type": "Restaurant",
+  "location": "Nashville, TN",
+  "owner_name": "John Doe",
+  "transaction_date": "2024-11-15",
+  "transaction_amount": 125.50,
+  "category": "Inventory",
+  "budget": 5000,
+  "spending_goal": 4500
+}
