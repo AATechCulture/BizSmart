@@ -1,6 +1,3 @@
-const openAiApiKey =
-  "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";
-
 document.getElementById("sendBtn").addEventListener("click", async function () {
   //   const userInput = document.getElementById("userInput").value;
   //   if (!userInput) {
