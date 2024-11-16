@@ -29,7 +29,7 @@ curse.execute(f"""
               business_type VARCHAR(255), 
               location VARCHAR(255), 
               owner_name VARCHAR(255), 
-              transaction_date TIMESTAMP, 
+              transaction_date VARCHAR(255), 
               transaction_amount FLOAT(4), 
               category VARCHAR(255), 
               paymentDesc VARCHAR(255), 
