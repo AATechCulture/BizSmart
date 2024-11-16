@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("UUID:", uuid);
 
     try {
-      const response = await fetch(`/${uuid}`, {
+      const response = await fetch(`https://bizsmart.onrender.com/${uuid}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
