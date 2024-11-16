@@ -1,5 +1,6 @@
 import json
 from faker import Faker
+import _mysql_connector
 
 # Initialize Faker
 faker = Faker()
