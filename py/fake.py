@@ -17,6 +17,21 @@ db = teradatasql.connect(host=HOST,user = USER, password = PASS)          # Conn
 
 curse = db.cursor()                                                       # Create cursor object from the database connection
 
+<<<<<<< HEAD
+=======
+curse.execute(f"""
+              CREATE TABLE {USER}.BusinessData1(
+              business_id INTEGER GENERATED ALWAYS AS IDENTITY (START WITH 1 INCREMENT BY 1),
+              business_name VARCHAR(255), 
+              business_type VARCHAR(255), 
+              location VARCHAR(255), 
+              owner_name VARCHAR(255), 
+              transaction_date VARCHAR(255), 
+              transaction_amount FLOAT(4), 
+              category VARCHAR(255), 
+              paymentDesc VARCHAR(255), 
+              vendor_name VARCHAR(255)
+>>>>>>> dc5e321 (requirements)
 
 # curse.execute(f"""
 #               CREATE TABLE {USER}.Transactionals(

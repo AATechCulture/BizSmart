@@ -14,7 +14,78 @@
 </head>
 
 <body>
-    <div class="tm-container">
+    <!-- Logged IN !!!!!! -->
+    <div id="loggedInContent" class="tm-container">
+        <div>
+            <div class="tm-row pt-4">
+                <div class="tm-col-left">
+                    <div class="tm-site-header media" style="position: fixed;">
+                        <i class="fas fa-money-bill fa-3x mt-1 tm-logo"></i>
+                        <div class="media-body">
+                            <h1 class="tm-sitename font-weight-bold" style="color: #ffffff;">BizSMART</h1>
+                            <p class="tm-slogon font-weight-bold text-light">Grow Your Business with Smarter
+                                Budgeting.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tm-col-right">
+                    <nav class="navbar navbar-expand-lg" id="tm-main-nav">
+                        <button class="navbar-toggler toggler-example mr-0 ml-auto" type="button" data-toggle="collapse"
+                            data-target="#navbar-nav" aria-controls="navbar-nav" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span><i class="fas fa-bars"></i></span>
+                        </button>
+                        <div class="collapse navbar-collapse tm-nav" id="navbar-nav">
+                            <ul class="navbar-nav text-uppercase">
+                                <li class="nav-item">
+                                    <a class="nav-link tm-nav-link" href="index.html">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link tm-nav-link" href="services.html">Dashboard</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link tm-nav-link" href="input.html">Input</a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link tm-nav-link" href="register.html">Register / Login<span
+                                            class="sr-only">(current)</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="tm-row">
+                <div class="tm-col-left"></div>
+                <main class="tm-col-right tm-contact-main"> <!-- Content -->
+                    <section class="tm-content tm-contact">
+                        <h2 class="mb-4 tm-content-title" id="youAreLoggedIn">You are already logged in!</h2>
+                        <p class="mb-5">Navigate to the home page to view your spending and expenses</p>
+                        <div>
+                            <div class="text-right">
+                                <button type="button" id="logoutButton" class="btn btn-big btn-primary">Log
+                                    Out</button>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </div>
+
+        <div class="tm-bg"> <!-- Diagonal background design -->
+            <div class="tm-bg-left"></div>
+            <div class="tm-bg-right" style="background-color: #000;"></div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- Logged OUT !!!!!! -->
+    <div class="tm-container" id="loggedOutContent">
         <div>
             <div class="tm-row pt-4">
                 <div class="tm-col-left">
@@ -59,8 +130,8 @@
                 <div class="tm-col-left"></div>
                 <main class="tm-col-right tm-contact-main"> <!-- Content -->
                     <section class="tm-content tm-contact">
-                        <h2 class="mb-4 tm-content-title">Login</h2>
-                        <p class="mb-5">Log into your account to see your spending and expenses</p>
+                        <h2 class="mb-4 tm-content-title">Register</h2>
+                        <p class="mb-5">Register to be able to log business expenses and track spending</p>
                         <div>
                             <div class="form-group mt-1 mb-4">
                                 <input type="email" name="email" id="emailInput" class="form-control"
@@ -70,11 +141,16 @@
                                 <input type="password" name="password" id="passwordInput" class="form-control"
                                     placeholder="Password" required="" />
                             </div>
+                            <div class="form-group mb-4">
+                                <input type="text" name="businessName" id="businessNameInput" class="form-control"
+                                    placeholder="Name of Business" required="" />
+                            </div>
                             <div class="text-right">
-                                <button type="button" id="loginButton" class="btn btn-big btn-primary">Login</button>
+                                <button type="button" id="registerButton"
+                                    class="btn btn-big btn-primary">Register</button>
                             </div>
                             <div class="text-right mt-2">
-                                <a href="register.html">Don't have an account? Register here</a>
+                                <a href="login.html">Already Registered? Login here</a>
                             </div>
                         </div>
                     </section>
@@ -92,12 +168,12 @@
         style="left: 0px; top: 0px; margin: 0px; padding: 0px; height: auto; width: auto; max-height: 100%; max-width: 100%; z-index: -999999; position: fixed;">
         <div class="backstretch-item"
             style="position: absolute; margin: 0px; padding: 0px; border: none; width: 100%; height: 100%; z-index: -999999;">
-            <img alt="" src="static/images/from-business.jpg"
+            <img alt="" src="../static/images/from-business.jpg"
                 style="position: absolute; margin: 0px; margin-top: 140px; padding: 0px; border: none; width: 1130.51px; height: 667px; max-width: none; inset: 0px auto auto -208.754px;">
         </div>
     </div>
 
-    <script type="module" src="src/js/login.js" defer></script>
+    <script type="module" src="src/js/register.js" defer></script>
 </body>
 
 </html>
