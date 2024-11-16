@@ -10,22 +10,6 @@ import {
   update,
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
 
-
-
-/*
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
-import {
-  getDatabase,
-  ref,
-  update,
-} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
-
-*/
-
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyCYQyzjwjBm6I067ISbizMwujJxS1C7dw4",
