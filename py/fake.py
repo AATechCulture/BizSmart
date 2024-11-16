@@ -9,27 +9,29 @@ faker = Faker()
 num_sets = 500
 
 
-HOST = "hackathonfakerfile-mwc2k52q3qz68tzk.env.clearscape.teradata.com"
-USER = "demo_user"
-PASS = "HackathonTSU2024#"
+HOST = "hackathonfakerfile-mwc2k52q3qz68tzk.env.clearscape.teradata.com"  # URL where database is hosted  
+USER = "demo_user"                                                        # User on the database we're using
+PASS = "HackathonTSU2024#"                                                # Password for database
 
-db = teradatasql.connect(host=HOST,user = USER, password = PASS)
+db = teradatasql.connect(host=HOST,user = USER, password = PASS)          # Connects python code to teradata database
 
-curse = db.cursor()
+curse = db.cursor()                                                       # Create cursor object from the database connection
 
 
 curse.execute("""
-              CREATE SET TABLE {USER}.Transactionals(
+        CREATE SET TABLE {USER}.Transactionals (
               business_id INTEGER,
-              business_name VARCHAR(255), business_type VARCHAR(255), 
-              location VARCHAR(255), owner_name VARCHAR(255), 
+              business_name VARCHAR(255), 
+              business_type VARCHAR(255), 
+              location VARCHAR(255), 
+              owner_name VARCHAR(255), 
               transaction_date TIMESTAMP, 
               transaction_amount FLOAT(4), 
               category VARCHAR(255), 
               payment_method VARCHAR(255), 
               vendor_name VARCHAR(255), 
               vendor_location VARCHAR(255),
-              UNIQUE PRIMARY INDEX(business_id)
+              UNIQUE PRIMARY INDEX (business_id)
 
               )
               
@@ -39,7 +41,7 @@ curse.execute("""
 
 
 # Generate the data
-data = [4]
+data = [4] 
 for _ in range(num_sets):
         business_name = faker.company()
         business_type = faker.random_element(["Retail", "Restaurant", "Service", "Tech"])
@@ -66,6 +68,7 @@ curse.close()
 
 
 
+'''
 
 
 
@@ -109,3 +112,5 @@ try:
 except teradatasql.DatabaseError as db_err:
     # Handle any errors that occur during the database connection
     print("Error while connecting to the Teradata database:", db_err)
+
+'''
